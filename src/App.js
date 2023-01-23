@@ -26,7 +26,7 @@ function App() {
 			const blockNumber = await alchemy.core.getBlockNumber();
 
 			// Update the component's state with the current block number
-			console.log("blockNumber: ", blockNumber);
+			// console.log("blockNumber: ", blockNumber);
 			setBlockNumber(blockNumber);
 		}
 		// Call the getBlockNumber function
@@ -37,7 +37,7 @@ function App() {
 			const blockDetails = await alchemy.core.getBlock(blockNumber);
 			const { transactions } = blockDetails;
 			// Update the component's state with the current block number
-			console.log("blockDetails: ", blockDetails);
+			// console.log("blockDetails: ", blockDetails);
 			setBlockDetails(transactions);
 		}
 		// Call the getBlock function
@@ -47,20 +47,35 @@ function App() {
 			const balance = await alchemy.core.getBalance(address, "latest");
 			setEthBalance(balance["_hex"] / Math.pow(10, 18));
 			const balances = await alchemy.core.getTokenBalances(address);
-			console.log("balances", balances);
-			console.log("balance: ", balance);
+			// console.log("balances", balances);
+			// console.log("balance: ", balance);
 		}
 		getBalance();
+
 		async function getBlockWithTransactions() {
 			// Call the alchemy.core.getBlockWithTransactions method to retrieve the details of the blockNumber
 			const { transactions } = await alchemy.core.getBlockWithTransactions(
 				blockNumber
 			);
+			transactions.filter((transaction) => {
+				// console.log("transaction: ", transaction);
+				const { s } = transaction;
+				// console.log("transaction: s ", s);
+
+				return s;
+			});
 
 			// Update the component's state with the current block number
-			console.log("transaction details: ", transactions);
+			// console.log("transaction details: ", transactions);
 			setBlockWithTransactions(transactions.length);
 		}
+		async function getTransactionReceipts() {
+			const { transactions } = await alchemy.core.getBlockWithTransactions(
+				blockNumber
+			);
+			console.log("TransactionReceipts: ", transactions);
+		}
+		getTransactionReceipts();
 		// Call the getBlockWithTransactions function
 		getBlockWithTransactions();
 	}, [blockNumber]); // The second argument to useEffect is an array of dependencies, which can be left empty in this case because the effect does not depend on any values from props or state
