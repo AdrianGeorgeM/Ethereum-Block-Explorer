@@ -11,8 +11,11 @@ const settings = {
 const alchemy = new Alchemy(settings);
 
 function App() {
+	const [address, setAddress] = useState(
+		"0x4405510a8869cC02DE2C7C39DF399eD968bF7c0b"
+	);
 	const [blockNumber, setBlockNumber] = useState();
-
+	const [ethBalance, setEthBalance] = useState();
 	const [blockDetails, setBlockDetails] = useState();
 	const [blockWithTransactions, setBlockWithTransactions] = useState();
 
@@ -40,6 +43,14 @@ function App() {
 		// Call the getBlock function
 		getBlock();
 
+		async function getBalance() {
+			const balance = await alchemy.core.getBalance(address, "latest");
+			setEthBalance(balance["_hex"] / Math.pow(10, 18));
+			const balances = await alchemy.core.getTokenBalances(address);
+			console.log("balances", balances);
+			console.log("balance: ", balance);
+		}
+		getBalance();
 		async function getBlockWithTransactions() {
 			// Call the alchemy.core.getBlockWithTransactions method to retrieve the details of the blockNumber
 			const { transactions } = await alchemy.core.getBlockWithTransactions(
