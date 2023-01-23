@@ -32,23 +32,23 @@ function App() {
 		async function getBlock() {
 			// Call the alchemy.core.getBlock method to retrieve the details of the blockNumber
 			const blockDetails = await alchemy.core.getBlock(blockNumber);
-
+			const { transactions } = blockDetails;
 			// Update the component's state with the current block number
 			console.log("blockDetails: ", blockDetails);
-			setBlockDetails(blockDetails.transactions);
+			setBlockDetails(transactions);
 		}
 		// Call the getBlock function
 		getBlock();
 
 		async function getBlockWithTransactions() {
 			// Call the alchemy.core.getBlockWithTransactions method to retrieve the details of the blockNumber
-			const blockWithTransactions = await alchemy.core.getBlockWithTransactions(
+			const { transactions } = await alchemy.core.getBlockWithTransactions(
 				blockNumber
 			);
 
 			// Update the component's state with the current block number
-			console.log("transaction details: ", blockWithTransactions.transactions);
-			setBlockWithTransactions(blockWithTransactions.transactions.length);
+			console.log("transaction details: ", transactions);
+			setBlockWithTransactions(transactions.length);
 		}
 		// Call the getBlockWithTransactions function
 		getBlockWithTransactions();
