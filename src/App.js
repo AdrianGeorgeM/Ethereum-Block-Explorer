@@ -69,13 +69,15 @@ function App() {
 			// console.log("transaction details: ", transactions);
 			setBlockWithTransactions(transactions.length);
 		}
-		async function getTransactionReceipts() {
-			const { transactions } = await alchemy.core.getBlockWithTransactions(
-				blockNumber
+		async function getTransactionReceipt() {
+			const transactions = await alchemy.core.getTransactionReceipt(
+				"0x88df016429689c079f3b2f6ad39fa052532c56795b733da78a91ebe6a713944b"
 			);
-			console.log("TransactionReceipts: ", transactions);
+			const { effectiveGasPrice } = transactions;
+
+			console.log("TransactionReceipts: ", effectiveGasPrice);
 		}
-		getTransactionReceipts();
+		getTransactionReceipt();
 		// Call the getBlockWithTransactions function
 		getBlockWithTransactions();
 	}, [blockNumber]); // The second argument to useEffect is an array of dependencies, which can be left empty in this case because the effect does not depend on any values from props or state
