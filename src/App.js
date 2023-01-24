@@ -1,7 +1,7 @@
 import { Alchemy, Network } from "alchemy-sdk";
 import { useEffect, useState } from "react";
 
-import "./App.css";
+import "./index.css";
 
 const settings = {
 	apiKey: process.env.REACT_APP_ALCHEMY_API_KEY,
@@ -83,7 +83,7 @@ function App() {
 	}, [blockNumber]); // The second argument to useEffect is an array of dependencies, which can be left empty in this case because the effect does not depend on any values from props or state
 
 	return (
-		<div className='blockexplorer-container'>
+		<div className='blockexplorer-container bg-red-300'>
 			<h1>Block Explorer</h1>
 			<div className='App'>
 				<p>Block Number (getBlockNumber): {blockNumber}</p>
