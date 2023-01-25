@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Alchemy, Network } from "alchemy-sdk";
+import Header from "./components/Header";
 import Alert from "react-bootstrap/Alert";
 import Form from "react-bootstrap/Form";
 
@@ -33,54 +34,9 @@ function App() {
 	console.log("showBlock", blockInfo);
 	return (
 		<div className='App'>
-			{/* <div className='container'>
+			<div className='container'>
 				<Header blockNumber={blockInfo} />
-				<Row>
-					<Col className='col-6'>
-						{!showBlock && (
-							<Button
-								style={{ margin: "15px" }}
-								variant='primary'
-								type='submit'
-								onClick={blockInfo}
-							>
-								Get Block Data
-							</Button>
-						)}
-						{showBlock && <Nav alchemy={alchemy} />}
-					</Col>
-					<Col className='col-6'>
-						{!showAccount && (
-							<Button
-								variant='primary'
-								type='submit'
-								style={{ margin: "15px" }}
-								onClick={accountInfo}
-							>
-								Show Account Information
-							</Button>
-						)}
-						{showAccount && <Account alchemy={alchemy} />}
-					</Col>
-				</Row>
-			</div> */}
-			<Alert dismissible variant='danger'>
-				<Alert.Heading>Oh snap! You got an error!</Alert.Heading>
-				<p>Change this and that and try again.</p>
-			</Alert>
-			<Form.Group className='mb-3'>
-				<Form.Label>Disabled input</Form.Label>
-				<Form.Control placeholder='Disabled input' disabled />
-			</Form.Group>
-			<Form.Group className='mb-3'>
-				<Form.Label>Disabled select menu</Form.Label>
-				<Form.Select disabled>
-					<option>Disabled select</option>
-				</Form.Select>
-			</Form.Group>
-			<Form.Group className='mb-3'>
-				<Form.Check type='checkbox' label="Can't check this" disabled />
-			</Form.Group>
+			</div>
 		</div>
 	);
 }
