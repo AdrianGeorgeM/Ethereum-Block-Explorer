@@ -2,6 +2,8 @@ import React from "react";
 import { useState } from "react";
 import { Card, Button } from "react-bootstrap";
 
+import styles from "./Content.module.css";
+
 const Nav = (props) => {
 	const [transactions, setTransactions] = useState();
 	const [nonce, setNonce] = useState();
@@ -38,18 +40,21 @@ const Nav = (props) => {
 			</Button>
 			{hash && (
 				<>
-					<Card style={{ maxWidth: "auto" }}>
-						<Card.Title>Block Information</Card.Title>
+					<section className={styles.section} style={{ maxWidth: "auto" }}>
+						<p className='border'> Hello Hash</p>
+						<h2 className='text-rose-500'>Block Information</h2>
 						<Card.Body>
 							<Card.Text style={{ fontStyle: "bold" }}>Hash</Card.Text>
-							<label>{hash}</label>
+							<label className={styles.hash}>{hash}</label>
 							<Card.Text style={{ textDecoration: "bold" }}>Nonce</Card.Text>
-							<label>{nonce}</label>
+
+							<label className={styles.hash}>{nonce}</label>
+
 							<Card.Text>Blocknumber</Card.Text>
 							<label>{number}</label>
 						</Card.Body>
 						<Card.Footer> Adrian Blockchain Solutions </Card.Footer>
-					</Card>
+					</section>
 					<Card style={{ maxWidth: "auto" }}>
 						<Card.Title>Transactions:</Card.Title>
 						<Card.Body>
