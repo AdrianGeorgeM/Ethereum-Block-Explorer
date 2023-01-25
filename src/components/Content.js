@@ -48,7 +48,7 @@ const Nav = (props) => {
 							<label className={styles.hash}>{hash}</label>
 							<Card.Text style={{ textDecoration: "bold" }}>Nonce</Card.Text>
 
-							<label className={styles.hash}>{nonce}</label>
+							<label className={styles.nonce}>{nonce}</label>
 
 							<Card.Text>Blocknumber</Card.Text>
 							<label>{number}</label>

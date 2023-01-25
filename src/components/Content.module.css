@@ -7,15 +7,6 @@
 }
 
 .section {
-	border: 1px solid lightblue;
-	background: lightblue;
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	flex-wrap: wrap;
 }
 .hash {
-	display: inline-block;
-	border: 1px solid red;
-	width: 30px;
 }
